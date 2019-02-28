@@ -36,7 +36,7 @@ else
    tar c -C "src/" --exclude "*.svn" --exclude "*.*~" --exclude "*.diff" --exclude "*.js.*" --exclude "svn-com*" . | \
 	tar x -C "rel/"
 fi
-svn info | grep -r "Revision:" | sed "s/Revision: //g" > rev.tmp
+git describe --always > rev.tmp
 cd rel
 #cp ../build_sys/manifest.json.google.com manifest.json
 
