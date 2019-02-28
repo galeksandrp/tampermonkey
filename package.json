@@ -1,0 +1,26 @@
+{
+  "name": "tampermonkey",
+  "version": "2.9.0",
+  "description": "Tampermonkey is the most popular userscript manager for Google Chrome",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/galeksandrp/tampermonkey.git"
+  },
+  "keywords": [
+    "tampermonkey"
+  ],
+  "author": "Grant Timmerman <granttimmerman@gmail.com>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/galeksandrp/tampermonkey/issues"
+  },
+  "homepage": "https://github.com/galeksandrp/tampermonkey#readme",
+  "devDependencies": {
+    "grunt": "^1.0.3",
+    "grunt-crx": "^1.0.5"
+  }
+}
