@@ -36,7 +36,7 @@ else
    tar c -C "src/" --exclude "*.svn" --exclude "*.*~" --exclude "*.diff" --exclude "*.js.*" --exclude "svn-com*" . | \
 	tar x -C "rel/"
 fi
-svn info | grep -r "Revision:" | sed "s/Revision: //g" > rev.tmp
+git describe | sed -e 's/^v//' -e 's/-[0-9]\+-/-/' > rev.tmp
 cd rel
 #cp ../build_sys/manifest.json.google.com manifest.json
 
@@ -85,10 +85,10 @@ then
     cat ../build_sys/manifest.json.google.com > manifest.tmp
 else
     cat ../build_sys/manifest.json.legacy.com > manifest.tmp
-    cat ../build_sys/tm_legacy.legacy.xml | sed "s/\(version='\)\([0-9]*\)\.\([0-9]*\)\.\([0-9]*\)'/\1\2\.\3\.`cat ../rev.tmp`'/g" > ../tm_legacy.xml
+    cat ../build_sys/tm_legacy.legacy.xml | sed "s/\(version='\)\([0-9]*\)\.\([0-9]*\)\.\([0-9]*\)'/\1`cat ../rev.tmp`'/g" > ../tm_legacy.xml
 fi
 
-cat manifest.tmp | sed "s/\(\"version\": \"\)\([0-9]*\)\.\([0-9]*\)\.\([0-9]*\)\"/\1\2\.\3\.`cat ../rev.tmp`\"/g" > manifest.json.tmp
+cat manifest.tmp | sed "s/\(\"version\": \"\)\([0-9]*\)\.\([0-9]*\)\.\([0-9]*\)\"/\1`cat ../rev.tmp`\"/g" > manifest.json.tmp
 rm manifest.tmp
 
 cd images
